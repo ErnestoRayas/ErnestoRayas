@@ -1,51 +1,47 @@
-<div align="center">
+## Hola 👋, soy Ernesto Rayas
 
-# Hola, soy Ernesto Rayas 👋
+Desarrollo aplicaciones web con **JavaScript, React y Node.js**.
 
-### Desarrollo web · React · Node.js
+<p align="center">
+  <img src="./assets/languages.svg" width="390" alt="Lenguajes más usados en mis repositorios públicos" />
+</p>
 
-Creo aplicaciones web que conectan interfaces claras con la lógica del servidor y los datos.
+<img align="right" src="./assets/coder.svg" width="130" alt="Programador con capucha e iniciales ER" />
 
-[Ver mi proyecto](https://github.com/ErnestoRayas/Proyecto_Papeleria) · [Explorar mis repositorios](https://github.com/ErnestoRayas?tab=repositories)
+### Mi stack
 
-</div>
+<p>
+  <img src="https://skillicons.dev/icons?i=js,html,css,react,vite,nodejs,express,sqlite,git&amp;theme=dark&amp;perline=9" width="440" alt="JavaScript, HTML, CSS, React, Vite, Node.js, Express, SQLite y Git" />
+</p>
 
----
+<p>
+  <a href="https://github.com/ErnestoRayas/Proyecto_Papeleria"><img src="https://img.shields.io/badge/MI_PROYECTO-238636?style=for-the-badge&amp;logo=github&amp;logoColor=white" alt="Ver mi proyecto" /></a>
+  <a href="https://open.spotify.com/track/6272S5nkbOvQDazRYq6muV"><img src="https://img.shields.io/badge/SPOTIFY-1DB954?style=for-the-badge&amp;logo=spotify&amp;logoColor=white" alt="Escuchar caperuza en Spotify" /></a>
+</p>
 
-## Sobre mí
+<br clear="both" />
 
-Soy **Ernesto Adrian Rayas Batalla**. En este espacio comparto mis proyectos de desarrollo web y lo que voy construyendo con JavaScript.
+### Un poco de código, un poco de arcade 👾
 
-Mi trabajo con **Papelería Karen**, un proyecto universitario en equipo, reúne frontend con React, una API con Express y persistencia con SQLite. Me interesa cuidar tanto la experiencia de uso como el funcionamiento de la aplicación.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/pacman-contribution-graph-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="./assets/pacman-contribution-graph.svg" />
+  <img src="./assets/pacman-contribution-graph-dark.svg" width="100%" alt="Pac-Man animado recorriendo mi calendario de contribuciones de GitHub" />
+</picture>
 
-## Tecnologías que uso en mis proyectos
+<br />
 
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=000)
-![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
-![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=fff)
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=fff)
-![Express](https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=fff)
-![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite&logoColor=fff)
+<p align="center">
+  <a href="https://open.spotify.com/track/6272S5nkbOvQDazRYq6muV">
+    <img src="./assets/spotify.svg" width="440" alt="caperuza de Fuerza Regida · Abrir en Spotify" />
+  </a>
+</p>
 
-## Proyecto destacado
+<details>
+<summary><b>🛍️ Proyecto destacado · Papelería Karen</b></summary>
 
-### 🛍️ Papelería Karen
-
-Aplicación web para consultar productos y gestionar pedidos de una papelería, con recogida y pago en tienda.
-
-- **Experiencia de compra:** catálogo con búsqueda y filtros, carrito, favoritos e historial de pedidos.
-- **Administración:** gestión de productos, inventario y pedidos.
-- **Aplicación completa:** interfaz adaptable, autenticación, roles y una API con base de datos SQLite.
-- **Calidad:** pruebas de frontend y API, documentación técnica y mejoras de accesibilidad.
-
-**Stack:** React · Vite · Node.js · Express · SQLite
+Aplicación web para una papelería: catálogo, carrito, favoritos, pedidos e inventario. Proyecto universitario en equipo con **React + Vite**, una **API Express** y **SQLite**.
 
 [Explorar el código y la documentación →](https://github.com/ErnestoRayas/Proyecto_Papeleria)
 
----
-
-<div align="center">
-
-Gracias por visitar mi perfil.
-
-</div>
+</details>
