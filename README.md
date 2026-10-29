@@ -1,4 +1,4 @@
-## Hola 👋, soy Ernesto Rayas
+## Hola , soy Ernesto Rayas
 
 Desarrollo aplicaciones web con **JavaScript, React y Node.js**.
 
