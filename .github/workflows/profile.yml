@@ -1,0 +1,77 @@
+name: Actualizar widgets del perfil
+on:
+  schedule:
+    - cron: '17 9 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/profile.yml
+permissions:
+  contents: write
+concurrency:
+  group: profile-widgets
+  cancel-in-progress: false
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Obtener repositorio
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+      - name: Generar Pac-Man
+        uses: abozanona/pacman-contribution-graph@7332e1de7903ab780c3692a4127a59cc13872daa
+        with:
+          github_user_name: ErnestoRayas
+          games: pacman
+          github_token: ${{ github.token }}
+      - name: Generar tarjeta de lenguajes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node --input-type=module <<'NODE'
+          import {mkdir, writeFile} from 'node:fs/promises';
+          const owner = 'ErnestoRayas';
+          const headers = {Accept:'application/vnd.github+json', Authorization:'Bearer '+process.env.GH_TOKEN, 'User-Agent':'ErnestoRayas-profile'};
+          async function api(path) {
+            const response = await fetch('https://api.github.com'+path,{headers});
+            if(!response.ok) throw new Error('GitHub API '+response.status+' at '+path);
+            return response.json();
+          }
+          const repos=[];
+          for(let page=1;;page++){
+            const batch=await api('/users/'+owner+'/repos?type=owner&per_page=100&page='+page);
+            repos.push(...batch.filter(r=>!r.fork && !r.archived && !r.private));
+            if(batch.length<100) break;
+          }
+          const totals={};
+          for(const repo of repos){
+            const languages=await api('/repos/'+owner+'/'+encodeURIComponent(repo.name)+'/languages');
+            for(const [name,bytes] of Object.entries(languages)) totals[name]=(totals[name]||0)+bytes;
+          }
+          const all=Object.entries(totals).sort((a,b)=>b[1]-a[1]);
+          const data=all.slice(0,5);
+          const total=all.reduce((sum,item)=>sum+item[1],0);
+          if(!total) throw new Error('No public language data found');
+          const colors={JavaScript:'#f1e05a',TypeScript:'#3178c6',CSS:'#a371f7',HTML:'#e34c26',Python:'#3572a5',Java:'#b07219'};
+          const esc=value=>String(value).replace(/[<>&"']/g,ch=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;',"'":'&apos;'}[ch]));
+          let x=24;
+          const bars=data.map(([name,bytes])=>{const width=342*bytes/total;const rect='<rect x="'+x+'" y="57" width="'+width+'" height="9" fill="'+(colors[name]||'#79c0ff')+'"/>';x+=width;return rect;}).join('');
+          const legend=data.map(([name,bytes],i)=>{const lx=24+(i%2)*174,ly=90+Math.floor(i/2)*24;return '<circle cx="'+(lx+4)+'" cy="'+(ly-4)+'" r="4" fill="'+(colors[name]||'#79c0ff')+'"/><text x="'+(lx+15)+'" y="'+ly+'" fill="#c9d1d9" font-size="12">'+esc(name)+' '+(bytes/total*100).toFixed(1)+'%</text>';}).join('');
+          const height=96+Math.ceil(data.length/2)*24;
+          const svg='<svg xmlns="http://www.w3.org/2000/svg" width="390" height="'+height+'" viewBox="0 0 390 '+height+'" role="img" aria-label="Lenguajes de los repositorios públicos"><rect x="0.5" y="0.5" width="389" height="'+(height-1)+'" rx="10" fill="#0d1117" stroke="#30363d"/><text x="24" y="34" fill="#f7c948" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="700">Lenguajes más usados</text><defs><clipPath id="bar"><rect x="24" y="57" width="342" height="9" rx="4.5"/></clipPath></defs><g clip-path="url(#bar)">'+bars+'</g><g font-family="Segoe UI,Arial,sans-serif">'+legend+'</g><text x="24" y="'+(height-15)+'" fill="#7d8590" font-family="Segoe UI,Arial,sans-serif" font-size="10">Código público · '+new Date().toISOString().slice(0,10)+'</text></svg>';
+          await mkdir('assets',{recursive:true});
+          await writeFile('assets/languages.svg',svg);
+          NODE
+      - name: Guardar gráficos
+        run: |
+          test -s dist/pacman-contribution-graph.svg
+          test -s dist/pacman-contribution-graph-dark.svg
+          cp dist/pacman-contribution-graph*.svg assets/
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/
+          if ! git diff --cached --quiet; then
+            git commit -m 'Actualizar widgets del perfil'
+            git push
+          fi
