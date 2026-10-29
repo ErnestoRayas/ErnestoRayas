@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" role="img" aria-label="Ilustración de un programador con capucha">
+<rect x=".5" y=".5" width="159" height="159" rx="12" fill="#0d1117" stroke="#30363d"/>
+<path d="M16 31h21m-21 8h36m-36 8h15M115 31h27m-18 8h18M18 127h31m-31 8h15" stroke="#163a32" stroke-width="3" stroke-linecap="round"/>
+<circle cx="125" cy="76" r="23" fill="#112525"/>
+<path d="M30 148v-34q0-18 13-29V65q0-43 37-43t37 43v20q13 11 13 29v34" fill="#1c2632"/>
+<path d="M44 89V65q0-31 36-31t36 31v24L80 118z" fill="#080d14"/>
+<path d="M54 65q0-23 26-23t26 23v22q-5 20-26 23-21-3-26-23z" fill="#ba9683"/>
+<path d="M49 74V61q0-27 31-27 30 0 31 27v22L98 62l-4 28-12-33-8 31-9-23-14 21z" fill="#080d14"/>
+<path d="M58 84h13m19 0h12" stroke="#ef636c" stroke-width="3" stroke-linecap="round"/>
+<path d="m37 100 30 27-8 22H29zm86 0-30 27 8 22h30z" fill="#273444"/>
+<path d="m70 111 10 14 10-14" fill="#101820"/>
+<rect x="38" y="125" width="84" height="28" rx="4" fill="#111b24" stroke="#3b4c5c"/>
+<text x="80" y="144" fill="#4adea5" font-family="monospace" font-size="14" text-anchor="middle">&lt;ER /&gt;</text>
+</svg>
